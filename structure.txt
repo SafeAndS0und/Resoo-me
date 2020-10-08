@@ -1,0 +1,16 @@
+Wizard Object
+{
+  currentlyEditedSection: number;
+  sections: [
+    {
+      name: string;
+      data: {
+        firstName: string;
+        lastName: string;
+      }
+      configuration: [
+        {type: "choice",  }
+      ]
+    }
+  ]
+}

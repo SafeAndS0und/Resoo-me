@@ -1,0 +1,24 @@
+@import '@common/constants.scss';
+
+.nav {
+  display: flex;
+  padding: 6px $pageBaseHorizontalPadding;
+  justify-content: space-between;
+  align-items: center;
+  //background-color: #e96f6f;
+  //box-shadow: 2px 2px 4px 0 #d7d7d7;
+
+  .brand {
+    letter-spacing: 3px;
+    //color: #ffffff;
+  }
+
+  .menu {
+    font-size: 1.1em;
+    font-weight: 400;
+    color: $textBrown;
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 50px;
+  }
+}

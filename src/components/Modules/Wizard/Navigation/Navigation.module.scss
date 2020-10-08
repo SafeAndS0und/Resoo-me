@@ -1,0 +1,12 @@
+.navigation {
+  display: grid;
+  grid-row-gap: 15px;
+  justify-items: center;
+
+  .buttonContainer {
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 20px;
+    width: 100%;
+  }
+}

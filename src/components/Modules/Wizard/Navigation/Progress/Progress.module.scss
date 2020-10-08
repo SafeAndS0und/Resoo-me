@@ -1,0 +1,39 @@
+@import "@common/constants.scss";
+
+.progress {
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 10px;
+  width: min-content;
+
+  .dot {
+    background-color: #ded7d4;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    transition: 0.25s;
+    position: relative;
+    cursor: pointer;
+
+    span {
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: $bgBrown;
+      color: white;
+      border-radius: 3px;
+      padding: 5px 10px;
+      font-size: 0.9em;
+      width: max-content;
+    }
+  }
+
+  .finished {
+    background-color: $successGreen;
+  }
+
+  .active {
+    background-color: $activeBlue;
+  }
+}

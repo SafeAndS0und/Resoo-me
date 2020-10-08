@@ -1,0 +1,28 @@
+$bgColor: #fbf6f5;
+$bgBrown: #3b2e2e;
+
+$textBrown: #bb866f;
+$textDarkBrown: #7e4132;
+$textGrey: #535353;
+$inputGrey: #efecec;
+
+$activeBlue: #598ce7;
+$successGreen: #7fd1ae;
+
+$pageBaseHorizontalPadding: 40px;
+
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #cbcbcb;
+    border-radius: 6px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #a9a8a8;
+  }
+}

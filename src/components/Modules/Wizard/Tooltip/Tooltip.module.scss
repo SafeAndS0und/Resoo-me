@@ -1,0 +1,50 @@
+@import "@common/constants.scss";
+
+.closed {
+}
+
+.tooltip {
+  justify-self: right;
+  width: 85%;
+  position: relative;
+  padding: 1.4em;
+  box-shadow: 2px 2px 4px 0px rgb(214, 214, 214);
+  border-radius: 8px;
+  color: white;
+  transition: 0.5s;
+  background-color: $bgBrown;
+
+  .content {
+    h1 {
+      font-size: 1.3em;
+      margin: 0 0 15px 0;
+    }
+
+    p {
+      width: 95%;
+      margin: 2px 0;
+      font-size: 0.95em;
+    }
+  }
+
+  button {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    font-size: 0.9em;
+    border: 0;
+    background-color: transparent;
+    color: white;
+    opacity: 0.5;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:active,
+    &:focus {
+      outline: none;
+    }
+  }
+}

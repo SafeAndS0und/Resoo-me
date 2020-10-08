@@ -1,0 +1,22 @@
+@import "@common/constants.scss";
+
+.structure {
+  padding: 80px $pageBaseHorizontalPadding;
+  display: grid;
+  grid-template-columns: 60% 40%;
+
+  .left {
+    margin-right: 30px;
+    max-height: 75vh;
+    padding-right: 20px;
+
+    overflow-y: scroll;
+
+    @include scrollbar;
+  }
+
+  .right {
+    padding: 0;
+    color: $textBrown;
+  }
+}

@@ -1,0 +1,35 @@
+.top {
+  display: grid;
+  width: 100%;
+
+  .name {
+    h1 {
+      display: inline;
+    }
+    p {
+      margin: 2px 0;
+    }
+  }
+
+  .justifyLeft {
+    justify-self: left;
+  }
+  .justifyCenter {
+    justify-self: center;
+    text-align: center;
+  }
+  .justifyRight {
+    justify-self: right;
+    text-align: right;
+  }
+
+  .small {
+    font-size: 1em;
+  }
+  .medium {
+    font-size: 1.25em;
+  }
+  .large {
+    font-size: 1.5em;
+  }
+}
