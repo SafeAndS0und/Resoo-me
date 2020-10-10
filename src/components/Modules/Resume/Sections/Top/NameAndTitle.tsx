@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./NameAndTitle.module.scss";
+import classNames from "classnames/bind";
 import { useElement, useOption } from "../../../../../utils/useElement";
 import { AvailableElements, AvailableOptions } from "@context/Types";
-import classNames from "classnames/bind";
 
 const cn = classNames.bind(styles);
 
@@ -12,7 +12,6 @@ export const NameAndTitle: React.FC<props> = () => {
   const firstname = useElement(AvailableElements.TOP_FIRSTNAME);
   const lastname = useElement(AvailableElements.TOP_LASTNAME);
   const jobTitle = useElement(AvailableElements.TOP_JOB_TITLE);
-
   const size = useOption<AvailableOptions.TOP_NAME_SIZE>(
     AvailableOptions.TOP_NAME_SIZE
   );

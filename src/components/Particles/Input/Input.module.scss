@@ -1,34 +1,16 @@
 @import "@common/constants.scss";
 
-.inputContainer {
-  margin-right: 20px;
-  margin-bottom: 20px;
+.Input {
+  padding: 0.7em;
+  border-radius: 0.5em;
+  font-size: 1.05em;
+  border: 0;
+  background-color: $inputGrey;
+  color: $textGrey;
+  font-weight: 600;
 
-  label {
-    margin-right: 5px;
-    padding-bottom: 5px;
-    font-size: 1.1em;
-    font-weight: 600;
-    color: $textBrown;
-    display: block;
-  }
-
-  .inline {
-    display: inline;
-  }
-
-  input {
-    padding: 0.7em;
-    border-radius: 0.5em;
-    font-size: 1.05em;
-    border: 0;
-    background-color: $inputGrey;
-    color: $textGrey;
-    font-weight: 600;
-
-    &:focus {
-      outline: 0;
-      background-color: #e7e3e3;
-    }
+  &:focus {
+    outline: 0;
+    background-color: #e7e3e3;
   }
 }

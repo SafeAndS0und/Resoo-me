@@ -5,7 +5,7 @@ export interface props {
   brandName?: string;
 }
 
-export const Navbar: React.FC<props> = ({ brandName = "Easy Resume" }) => {
+export const Navbar: React.FC<props> = ({ brandName = "resoo.me" }) => {
   return (
     <nav className={styles.nav}>
       <div className={styles.brand}>

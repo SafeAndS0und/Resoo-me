@@ -14,6 +14,8 @@ import {
   step,
   steps,
 } from "@context/WizardContext/WizardTypes";
+import { Checkbox } from "@components/Particles/Checkbox/Checkbox";
+import { Label } from "@components/Particles/Label/Label";
 
 interface props {
   sectionName: string;
@@ -26,33 +28,34 @@ const ElementDistributor = (element: elementWithId) => {
   switch (element.type) {
     case elementTypes.INPUT:
       return (
-        <Input
-          label={{ text: element.labelText, name: element.labelText }}
-          defaultValue={element.defaultValue}
-          onBlur={(e) => {
-            dispatchToWizard({
-              type: actionTypes.UPDATE_ELEMENT_VALUE,
-              payload: { elementId: element.id, value: e.target.value },
-            });
-          }}
-        />
+        <Label text={element.labelText} inline={false}>
+          <Input
+            contextValue={element.value || element.defaultValue}
+            onBlur={(e) => {
+              dispatchToWizard({
+                type: actionTypes.UPDATE_ELEMENT_VALUE,
+                payload: { elementId: element.id, value: e.target.value },
+              });
+            }}
+          />
+        </Label>
       );
     case elementTypes.CHECKBOX:
       return (
-        <Input
-          label={{ text: element.labelText, name: element.labelText }}
-          defaultChecked={element.defaultChecked}
-          type="checkbox"
-          onChange={(e) => {
-            dispatchToWizard({
-              type: actionTypes.UPDATE_ELEMENT_VALUE,
-              payload: {
-                elementId: element.id,
-                value: e.target.checked ? "checked" : "not-checked",
-              },
-            });
-          }}
-        />
+        <Label text={element.labelText} inline={false}>
+          <Checkbox
+            contextValue={element.value || element.defaultValue}
+            onChange={(e) => {
+              dispatchToWizard({
+                type: actionTypes.UPDATE_ELEMENT_VALUE,
+                payload: {
+                  elementId: element.id,
+                  value: e.target.checked ? "checked" : "not-checked",
+                },
+              });
+            }}
+          />
+        </Label>
       );
     case elementTypes.CHOICE:
       if (element.options.length === 0) return null;

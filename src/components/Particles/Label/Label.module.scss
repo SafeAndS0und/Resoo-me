@@ -1,0 +1,20 @@
+@import "@common/constants.scss";
+
+.label {
+  margin-right: 20px;
+  margin-bottom: 20px;
+
+  span {
+    margin-right: 20px;
+    margin-bottom: 0;
+    padding-bottom: 5px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: $textBrown;
+    display: block;
+  }
+
+  .inline {
+    display: inline;
+  }
+}
