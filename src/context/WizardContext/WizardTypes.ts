@@ -1,9 +1,4 @@
-import {
-  AvailableElements,
-  AvailableLayouts,
-  AvailableOptions,
-  AvailableSections,
-} from "@context/Types";
+import { AvailableElements } from "@context/Types";
 
 export enum elementTypes {
   INPUT,
@@ -19,13 +14,9 @@ export interface element {
   defaultChecked?: boolean;
   defaultChoice?: number;
   options?: string[];
-  relatedLayout?: AvailableLayouts;
-  relatedOption?: AvailableOptions;
 }
 
-export type elementWithId = element & { id: number };
-
-export type elements = elementWithId[];
+export type elements = element[];
 
 export type step = { name: string; elementsUsed: AvailableElements[] };
 
@@ -42,31 +33,45 @@ export type section = {
   steps: steps;
 };
 
+export interface elementWithUpdateHandler<Schema> extends element {
+  updateHandler: Schema;
+}
+
 export type sections = section[];
 
-export type layouts = {
-  [AvailableLayouts.TOP]: {
-    left: AvailableSections | null;
-    center: AvailableSections | null;
-    right: AvailableSections | null;
-  };
-};
+type TOP_FIRSTNAME_VALUE = string;
+type TOP_LASTNAME_VALUE = string;
+type TOP_JOB_TITLE_VALUE = string;
+type TOP_SIZE_VALUE = number;
+type TOP_BREAKLINE_VALUE = "checked" | "not-checked";
+type TOP_PLACEMENT_NAME_VALUE = number;
+type TOP_PLACEMENT_CONTACT_VALUE = number;
+type TOP_PLACEMENT_PHOTO_VALUE = number;
 
-type checkboxValue = "checked" | "not-checked";
-
-export type options = {
-  [AvailableOptions.TOP_NAME_SIZE]: "0" | "1" | "2" | string | null;
-  [AvailableOptions.TOP_NAME_BREAKLINE]: checkboxValue | string | null;
+export type elementValues = {
+  [AvailableElements.TOP_FIRSTNAME]: TOP_FIRSTNAME_VALUE;
+  [AvailableElements.TOP_LASTNAME]: TOP_LASTNAME_VALUE;
+  [AvailableElements.TOP_JOB_TITLE]: TOP_JOB_TITLE_VALUE;
+  [AvailableElements.TOP_SIZE]: TOP_SIZE_VALUE;
+  [AvailableElements.TOP_BREAKLINE]: TOP_BREAKLINE_VALUE;
+  [AvailableElements.TOP_PLACEMENT_NAME]: TOP_PLACEMENT_NAME_VALUE;
+  [AvailableElements.TOP_PLACEMENT_CONTACT]: TOP_PLACEMENT_CONTACT_VALUE;
+  [AvailableElements.TOP_PLACEMENT_PHOTO]: TOP_PLACEMENT_PHOTO_VALUE;
 };
 
 export type elementsState = {
-  [key: number]: element;
+  [AvailableElements.TOP_FIRSTNAME]: elementWithUpdateHandler<(v: TOP_FIRSTNAME_VALUE) => TOP_FIRSTNAME_VALUE>;
+  [AvailableElements.TOP_LASTNAME]: elementWithUpdateHandler<(v: TOP_LASTNAME_VALUE) => TOP_LASTNAME_VALUE>;
+  [AvailableElements.TOP_JOB_TITLE]: elementWithUpdateHandler<(v: TOP_JOB_TITLE_VALUE) => TOP_JOB_TITLE_VALUE>;
+  [AvailableElements.TOP_SIZE]: elementWithUpdateHandler<(v: string) => TOP_SIZE_VALUE>;
+  [AvailableElements.TOP_BREAKLINE]: elementWithUpdateHandler<(v: TOP_BREAKLINE_VALUE) => TOP_BREAKLINE_VALUE>;
+  [AvailableElements.TOP_PLACEMENT_NAME]: elementWithUpdateHandler<(v: string) => TOP_PLACEMENT_NAME_VALUE>;
+  [AvailableElements.TOP_PLACEMENT_CONTACT]: elementWithUpdateHandler<(v: string) => TOP_PLACEMENT_CONTACT_VALUE>;
+  [AvailableElements.TOP_PLACEMENT_PHOTO]: elementWithUpdateHandler<(v: string) => TOP_PLACEMENT_PHOTO_VALUE>;
 };
 
 export type WizardConfigurationType = {
   currentlyAt: number;
-  layout: layouts;
-  options: options;
   sections: sections;
   elements: elementsState;
 };

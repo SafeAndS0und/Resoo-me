@@ -1,11 +1,6 @@
-import {
-  AvailableElements,
-  AvailableLayouts,
-  AvailableOptions,
-  AvailableSections,
-} from "@context/Types";
+import { AvailableElements, AvailableSections } from "@context/Types";
 import { elements } from "@context/WizardContext/Elements";
-import {WizardConfigurationType} from "@context/WizardContext/WizardTypes";
+import { WizardConfigurationType } from "@context/WizardContext/WizardTypes";
 
 const stepsWithinSections = {
   [AvailableSections.NAME_AND_TITLE]: [
@@ -20,7 +15,7 @@ const stepsWithinSections = {
     {
       name: "Configuration",
       elementsUsed: [
-        AvailableElements.TOP_PLACEMENT,
+        AvailableElements.TOP_PLACEMENT_NAME,
         AvailableElements.TOP_SIZE,
         AvailableElements.TOP_BREAKLINE,
       ],
@@ -29,24 +24,19 @@ const stepsWithinSections = {
   [AvailableSections.CONTACT]: [
     {
       name: "Data",
-      elementsUsed: [],
+      elementsUsed: [AvailableElements.TOP_PLACEMENT_CONTACT],
+    },
+  ],
+  [AvailableSections.PHOTO]: [
+    {
+      name: "Data",
+      elementsUsed: [AvailableElements.TOP_PLACEMENT_PHOTO],
     },
   ],
 };
 
 export const WizardConfiguration: WizardConfigurationType = {
   currentlyAt: 0,
-  layout: {
-    [AvailableLayouts.TOP]: {
-      left: AvailableSections.NAME_AND_TITLE,
-      center: null,
-      right: null,
-    },
-  },
-  options: {
-    [AvailableOptions.TOP_NAME_SIZE]: "0",
-    [AvailableOptions.TOP_NAME_BREAKLINE]: "not-checked",
-  },
   elements,
   sections: [
     {
@@ -68,6 +58,16 @@ export const WizardConfiguration: WizardConfigurationType = {
           "Also, some placeholder can keep whatever you want them to keep, not all of them have a clear purpose.",
       },
       steps: stepsWithinSections[AvailableSections.CONTACT],
+    },
+    {
+      name: "3. Photo",
+      tip: {
+        header: "Smile!",
+        content:
+          "Remember that you don't need to fill out everything - that's your call." +
+          "Also, some placeholder can keep whatever you want them to keep, not all of them have a clear purpose.",
+      },
+      steps: stepsWithinSections[AvailableSections.PHOTO],
     },
   ],
 };

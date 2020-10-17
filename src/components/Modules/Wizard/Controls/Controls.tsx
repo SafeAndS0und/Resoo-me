@@ -3,26 +3,19 @@ import styles from "./Controls.module.scss";
 import { Input } from "@components/Particles/Input/Input";
 import { Choice } from "@components/Particles/Choice/Choice";
 
-import {
-  actionTypes,
-  useWizardDispatch,
-  useWizardState,
-} from "@context/WizardContext/WizardContext";
-import {
-  elementTypes,
-  elementWithId,
-  step,
-  steps,
-} from "@context/WizardContext/WizardTypes";
+import { actionTypes, useWizardDispatch, useWizardState } from "@context/WizardContext/WizardContext";
+import { element, elementTypes, step, steps } from "@context/WizardContext/WizardTypes";
 import { Checkbox } from "@components/Particles/Checkbox/Checkbox";
 import { Label } from "@components/Particles/Label/Label";
+import { AvailableElements } from "@context/Types";
+import { type } from "os";
 
 interface props {
   sectionName: string;
   steps: steps;
 }
 
-const ElementDistributor = (element: elementWithId) => {
+const ElementDistributor = (element: element & { id: AvailableElements }) => {
   const dispatchToWizard = useWizardDispatch();
 
   switch (element.type) {
@@ -59,11 +52,13 @@ const ElementDistributor = (element: elementWithId) => {
       );
     case elementTypes.CHOICE:
       if (element.options.length === 0) return null;
+      const choice = element.defaultChoice;
+
       return (
         <Choice
           property={element.labelText}
           options={element.options}
-          defaultChoice={element.defaultChoice}
+          choice={choice}
           onChange={(active) => {
             dispatchToWizard({
               type: actionTypes.UPDATE_ELEMENT_VALUE,
@@ -84,20 +79,15 @@ const Step: React.FC<step> = ({ name, elementsUsed }) => {
     ...wizardState.elements[id],
     id,
   }));
-
   return (
     <section>
       <h2>{name}</h2>
-      <div className={styles.contentContainer}>
-        {elements.map(ElementDistributor)}
-      </div>
+      <div className={styles.contentContainer}>{elements.map(ElementDistributor)}</div>
     </section>
   );
 };
 
-const mapHandler = (step: step) => (
-  <Step name={step.name} elementsUsed={step.elementsUsed} />
-);
+const mapHandler = (step: step) => <Step name={step.name} elementsUsed={step.elementsUsed} />;
 
 export const Controls: React.FC<props> = ({ sectionName, steps }) => {
   return (
